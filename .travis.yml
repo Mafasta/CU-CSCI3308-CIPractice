@@ -1,4 +1,4 @@
 language: c
 compiler: gcc
-install: make dep
-script: make
+install: make clean
+script: make test
