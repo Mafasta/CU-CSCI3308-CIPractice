@@ -71,7 +71,10 @@ void coord_2d_midpoint(coord_2d_t* mid, const coord_2d_t* a, const coord_2d_t* b
 }
 
 double coord_2d_area_triangle(const coord_2d_t* a, const coord_2d_t* b, const coord_2d_t* c) {
-    double area = (a->x * (b->y - c->y)) + (b->x * (c->y - c->y)) + (c->x * (a->y - b->y));
+    double area = (a->x * (b->y - c->y));
+    area += (b->x * (c->y - a->y));
+    area +=  (c->x * (a->y - b->y));
+    area = area/2;
 
-    return abs(area/2);
+    return fabs(area);
 }

@@ -151,8 +151,8 @@ START_TEST(test_2d_area_triangle)
     coord_2d_t b;
     coord_2d_t c;
 
-    a.x = 1;
-    a.y = 1;
+    a.x = 15;
+    a.y = 16;
 
     c.x = 23;
     c.y = 30;
@@ -161,8 +161,18 @@ START_TEST(test_2d_area_triangle)
     b.y = 25;
 
     double test_area = coord_2d_area_triangle(&a, &b, &c);
-    double exp_area = 446.50;
-    ck_assert(coord_2d_eq(&test_area, &exp_area));
+    double exp_area = 209.00;
+    ck_assert(test_area == exp_area);
+
+    a.x = 1;
+    a.y = 1;
+    b.x = 1;
+    b.y = 2;
+    c.x = 1;
+    c.y = 3;
+    test_area = coord_2d_area_triangle(&a, &b, &c);
+    exp_area = 0.0;
+    ck_assert(test_area == exp_area);
 
 }
 END_TEST
@@ -191,6 +201,7 @@ Suite* coord_2d_suite(void)
     suite_add_tcase(s, tc_2d_eq);
     suite_add_tcase(s, tc_2d_dist);
     suite_add_tcase(s, tc_2d_midpoint);
+    suite_add_tcase(s, tc_2d_area_triangle);
 
     /* Return Suite */
     return s;
