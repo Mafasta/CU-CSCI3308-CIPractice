@@ -1,4 +1,5 @@
+sudo: required
 language: c
 compiler: gcc
-install: make clean
-script: make test
+install: make dep
+script: make
